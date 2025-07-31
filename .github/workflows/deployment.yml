@@ -13,6 +13,7 @@ jobs:
     
     lint:
       runs-on: ubuntu-latest
+      needs: test
       steps:
           - name: Get repository code
             uses: actions/checkout@v4
@@ -23,6 +24,7 @@ jobs:
 
     build:
       runs-on: ubuntu-latest
+      needs: lint
       steps:
           - name: Get repository code
             uses: actions/checkout@v4
@@ -31,4 +33,4 @@ jobs:
           - name: Build application
             run: npm run build
           - name: Deploy
-            run: echo Deployion ...
+            run: echo Deploying ...
